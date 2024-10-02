@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f700;
+    color: #33333300;
+    overflow-x: hidden;
+    min-height: 100px;
+}
+
+.background {
+    background-image: url('images/giphy.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    min-height: 150vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* New image positioned at the very top */
+.top-image {
+    width: 550px; /* Adjust the width as needed */
+    display: block; /* Ensures it takes full line width */
+    margin: 20px auto; /* Centers the image */
+}
+
+/* White bar for the main image and social icons */
+.white-bar {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px; /* Space for social icons */
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0);
+    text-align: center;
+    position: relative; /* Allows absolute positioning of social icons */
+    margin: 50px auto; /* Center white bar horizontally */
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Social media icons at the top right corner */
+.socials {
+    position: absolute;
+    top: 20px; /* Position from the top */
+    right: 0px; /* Position from the right */
+    display: flex;
+    gap: 15px; /* Space between icons */
+}
+
+.socials img {
+    width: 75px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+}
+
+/* Center image below the white bar */
+.center-image {
+    width: 500px;
+    margin: 20px 0; /* Space above and below the center image */
+    transition: transform 0.3s ease-in-out;
+}
+
+.center-image:hover {
+    transform: scale(1.1);
+}
+
+/* Grid of 3x3 images */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center; /* Center grid items */
+    padding: 60px 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Adjusted for spacing below the center image */
+    width: 90%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid item images */
+.grid-item {
+    max-width: 100%; /* Ensures grid items fit within their column */
+    display: flex;
+    justify-content: center; /* Center image within grid item */
+}
+
+.grid-item img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 400px; /* Set max width to control size */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.15);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Footer for extra page space */
+footer {
+    height: 300px;
+    background-color: #333;
+    color: rgba(255, 255, 255, 0);
+    text-align: center;
+    padding: 50px;
+    margin-top: 100px;
+    animation: fadeIn 2s ease-in-out;
+}
