@@ -3,40 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Interactive Website</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Purpose of Life - Inspirational Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f7;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: url('images/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+        }
+        
+        .hero-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 90%;
+            margin: 120px auto 50px;
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .top-image {
+            width: 80%;
+            max-width: 500px;
+            display: block;
+            margin: 0 auto 30px;
+            animation: fadeInDown 1.2s ease-out;
+        }
+        
+        .center-image {
+            width: 85%;
+            max-width: 450px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        
+        .center-image:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Social Media Links */
+        .socials {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            animation: fadeInUp 1.8s ease-out;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-link img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        
+        /* Grid Gallery */
+        .gallery-section {
+            padding: 50px 5%;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #6c5ce7);
+            border-radius: 2px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            aspect-ratio: 1/1;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .grid-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 20px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .grid-item:hover .grid-item-overlay {
+            opacity: 1;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #3498db, #6c5ce7);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #3498db;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .footer-socials a:hover {
+            background-color: #3498db;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 4%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content {
+                padding: 30px 20px;
+            }
+            
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .cta-title {
+                font-size: 32px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <img src="images/Purpose of life (1).png" alt="Purpose of Life Logo" class="logo">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
 
-    <!-- Background and main content -->
-    <div class="background">
-        <!-- White bar for the main image, social icons, and grid -->
-        <div class="white-bar">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="images/Purpose of life (1).png" alt="Purpose of Life" class="top-image">
+            <img src="images/main image purpose of life.png" alt="Main Concept" class="center-image">
             <div class="socials">
-                <a href="https://t.me/+Da9iifMHAJc0NjI0"><img src="images/tg-square.png" alt="Twitter"></a>
-                <a href="https://x.com/LifePurpose_sol"><img src="images/X-square.png" alt="Telegram"></a>
-            </div>
-            <!-- New image positioned above the center image -->
-            <img src="images/Purpose of life (1).png" alt="Top Image" class="top-image">
-            <!-- Center image -->
-            <img src="images/main image purpose of life.png" alt="Center Image" class="center-image">
-            
-            <!-- Grid of 3x3 images -->
-            <div class="grid-container">
-                <div class="grid-item"><img src="images/1 (2).png" alt="Image 1"></div>
-                <div class="grid-item"><img src="images/2 (1).png" alt="Image 2"></div>
-                <div class="grid-item"><img src="images/3.png" alt="Image 3"></div>
-                <div class="grid-item"><img src="images/4.png" alt="Image 4"></div>
-                <div class="grid-item"><img src="images/5 (2).png" alt="Image 5"></div>
-                <div class="grid-item"><img src="images/6 (1).png" alt="Image 6"></div>
-                <div class="grid-item"><img src="images/6 (2).png" alt="Image 7"></div>
-                <div class="grid-item"><img src="images/6 (3).png" alt="Image 8"></div>
-                <div class="grid-item"><img src="images/6 (4).png" alt="Image 9"></div>
+                <a href="https://t.me/+Da9iifMHAJc0NjI0" class="social-link">
+                    <img src="images/tg-square.png" alt="Telegram">
+                </a>
+                <a href="https://x.com/LifePurpose_sol" class="social-link">
+                    <img src="images/X-square.png" alt="Twitter/X">
+                </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Inspirational Gallery</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="images/1 (2).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Purpose Begins Within</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/2 (1).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Finding Direction</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/3.png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Embracing Growth</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/4.png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Mindful Living</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/5 (2).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Spiritual Awakening</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/6 (1).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Balance & Harmony</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/6 (2).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Inner Peace</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/6 (3).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Living Authentically</h3>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="images/6 (4).png" alt="Inspirational Content">
+                <div class="grid-item-overlay">
+                    <h3>Infinite Potential</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Discover Your Purpose Today</h2>
+            <p class="cta-text">Join our community and begin your journey to find meaning and fulfillment in your life. Let us guide you through the path of self-discovery and personal growth.</p>
+            <a href="#" class="cta-button">Join Our Community</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We are dedicated to helping people discover their life purpose and find meaning in their everyday existence through inspirational content and community support.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <ul class="footer-links">
+                    <li>Email: info@purposeoflife.com</li>
+                    <li>Phone: +1 (555) 123-4567</li>
+                </ul>
+                <div class="footer-socials">
+                    <a href="https://t.me/+Da9iifMHAJc0NjI0"><i class="fab fa-telegram"></i></a>
+                    <a href="https://x.com/LifePurpose_sol"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Purpose of Life. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Adjust for navbar height
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+        
+        // Scroll animations
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.grid-item, .section-title, .cta-content');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Prepare elements for animation
+        document.querySelectorAll('.grid-item, .section-title, .cta-content').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Initial check and add scroll listener
+        window.addEventListener('load', revealOnScroll);
+        window.addEventListener('scroll', revealOnScroll);
+    </script>
 </body>
 </html>
